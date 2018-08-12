@@ -9,26 +9,26 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/titleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="タイトル"/>
+            android:hint="商品名"
+            android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/contentText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="メモ" />
+            android:hint="値段"
+            android:inputType="number" />
 
         <Button
             android:id="@+id/create"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="update"
-            android:text="更新" />
+            android:onClick="create"
+            android:text="作成" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

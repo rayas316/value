@@ -1,12 +1,15 @@
 package com.example.raysakakibara.memocamp;
 
-import io.realm.Realm;
+import java.util.Date;
+
 import io.realm.RealmObject;
 
 public class Memo extends RealmObject {
-    public String titles;
+    public String title;
 
     public String updateDate;
 
-    public String contents;
+    public String content;
+
+    public Date date;
 }

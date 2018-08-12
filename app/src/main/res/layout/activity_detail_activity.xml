@@ -8,42 +8,40 @@
     tools:layout_editor_absoluteY="81dp">
 
     <EditText
-        android:id="@+id/title"
+        android:id="@+id/titleEditText"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_marginBottom="13dp"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/content"
+        app:layout_constraintBottom_toTopOf="@+id/contentEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/content"
+        android:id="@+id/contentEditText"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginBottom="3dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:text="Name"
         app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="@+id/title"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintStart_toStartOf="@+id/titleEditText"
+        app:layout_constraintTop_toBottomOf="@+id/titleEditText" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="342dp"
-        android:onClick="update2"
+        android:onClick="update"
         android:text="update"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/content" />
+        app:layout_constraintTop_toBottomOf="@+id/contentEditText" />
 
 </android.support.constraint.ConstraintLayout>
