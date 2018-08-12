@@ -23,8 +23,6 @@ public class Create extends AppCompatActivity {
         realm = Realm.getDefaultInstance();
         titleEditText = findViewById(R.id.titleText);
          contentEditText= findViewById(R.id.contentText);
-
-
     }
 
 

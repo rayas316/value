@@ -7,22 +7,34 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.util.Log;
 
 import java.util.List;
-
+import android.app.AlertDialog.Builder;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.FragmentManager;
+import android.content.DialogInterface;
+import android.widget.ArrayAdapter;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
 public class MainActivity extends AppCompatActivity {
-    public ListView listView;
+    private static final String DEBUG = "DEBUG";
+    private ArrayAdapter<String> adapter;
+    private ListView listView;
     public Realm realm;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        adapter = new ArrayAdapter<String>(getApplicationContext(),
+                android.R.layout.simple_list_item_1);
 
         realm = Realm.getDefaultInstance();
         listView = (ListView) findViewById(R.id.listView);
+        listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -32,10 +44,70 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("updateDate", memo.updateDate);
                 startActivity(intent);
             }
-        });
 
+        });
+        listView.setOnItemLongClickListener
+                (new AdapterView.OnItemLongClickListener() {
+
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> parent,
+                                                   View view, int position, long id) {
+                        ListView list = (ListView) parent;
+                        String selectedItem = (String) list
+                                .getItemAtPosition(position);
+                        Log.d(DEBUG, "Long click : " + selectedItem);
+
+                        showDialogFragment(selectedItem);
+                        return false;
+                    }
+                });
 
     }
+
+    private void showDialogFragment(String selectedItem) {
+        FragmentManager manager = getFragmentManager();
+        DeleteDialog dialog = new DeleteDialog();
+        dialog.setSelectedItem(selectedItem);
+
+        dialog.show(manager, "dialog");
+    }
+
+    public static class DeleteDialog extends DialogFragment {
+
+        private static final String DEBUG = "DEBUG";
+
+        private String selectedItem = null;
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            Log.d(DEBUG, "onCreateDialog()");
+
+            Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("Delete entry.");
+            builder.setMessage("Are you really?");
+            builder.setPositiveButton("Yes I'm serious.",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            MainActivity activity = (MainActivity) getActivity();
+                            activity.removeItem(selectedItem);
+                        }
+                    });
+            AlertDialog dialog = builder.create();
+            return dialog;
+        }
+
+        public void setSelectedItem(String selectedItem) {
+            Log.d(DEBUG, "setSelectedItem() - item : " + selectedItem);
+            this.selectedItem = selectedItem;
+        }
+    }
+
+    private void removeItem(String selectedItem) {
+        Log.d(DEBUG, "doPositiveClick() - item : " + selectedItem);
+        adapter.remove(selectedItem);
+    }
+
 
     public void setMemoList() {
         RealmResults<Memo> results = realm.where(Memo.class).findAll();
@@ -58,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onDestroy(){
+    public void onDestroy() {
         super.onDestroy();
         realm.close();
 
