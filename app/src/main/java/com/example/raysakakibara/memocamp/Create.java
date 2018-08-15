@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,6 +48,11 @@ public class Create extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH時mm分", Locale.JAPANESE);
         String updateDate = sdf.format(date);
         String content = contentEditText.getText().toString();
+        if (titleEditText.getText().toString().equals("") == false || contentEditText.getText().toString().equals("") == false) {
+            Toast toast = Toast.makeText(this, "内容が入力されていません", Toast.LENGTH_LONG);
+            toast.show();
+
+        }
 
         save(title, updateDate, content,date);
 

@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.util.Log;
 
 import java.util.List;
+
 import android.app.AlertDialog.Builder;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -17,11 +18,11 @@ import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.widget.ArrayAdapter;
+
 import io.realm.Realm;
 import io.realm.RealmResults;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String DEBUG = "DEBUG";
     private ArrayAdapter<String> adapter;
     private ListView listView;
     public Realm realm;
@@ -55,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
                         ListView list = (ListView) parent;
                         String selectedItem = (String) list
                                 .getItemAtPosition(position);
-                        Log.d(DEBUG, "Long click : " + selectedItem);
 
                         showDialogFragment(selectedItem);
                         return false;
@@ -74,13 +74,11 @@ public class MainActivity extends AppCompatActivity {
 
     public static class DeleteDialog extends DialogFragment {
 
-        private static final String DEBUG = "DEBUG";
 
         private String selectedItem = null;
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            Log.d(DEBUG, "onCreateDialog()");
 
             Builder builder = new AlertDialog.Builder(getActivity());
             builder.setTitle("Delete entry.");
@@ -98,13 +96,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void setSelectedItem(String selectedItem) {
-            Log.d(DEBUG, "setSelectedItem() - item : " + selectedItem);
             this.selectedItem = selectedItem;
         }
     }
 
     private void removeItem(String selectedItem) {
-        Log.d(DEBUG, "doPositiveClick() - item : " + selectedItem);
         adapter.remove(selectedItem);
     }
 
