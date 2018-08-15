@@ -2,6 +2,7 @@ package com.example.raysakakibara.memocamp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -23,11 +24,11 @@ public class Create extends AppCompatActivity {
         setContentView(R.layout.activity_create);
         realm = Realm.getDefaultInstance();
         titleEditText = findViewById(R.id.titleText);
-         contentEditText= findViewById(R.id.contentText);
+        contentEditText = findViewById(R.id.contentText);
     }
 
 
-    private void save(final String title, final String updateDate, final String content,final Date date) {
+    private void save(final String title, final String updateDate, final String content, final Date date) {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm bgRealm) {
@@ -35,7 +36,7 @@ public class Create extends AppCompatActivity {
                 memo.title = title;
                 memo.updateDate = updateDate;
                 memo.content = content;
-                memo.date=date;
+                memo.date = date;
             }
         });
 
@@ -48,13 +49,20 @@ public class Create extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH時mm分", Locale.JAPANESE);
         String updateDate = sdf.format(date);
         String content = contentEditText.getText().toString();
-        if (titleEditText.getText().toString().equals("") == false || contentEditText.getText().toString().equals("") == false) {
-            Toast toast = Toast.makeText(this, "内容が入力されていません", Toast.LENGTH_LONG);
-            toast.show();
-
+        if (title.matches("")) {
+            Toast.makeText(this, "商品名が入力されていません。", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (content.matches("")) {
+            Toast.makeText(this, "値段が入力されていません。", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (title.matches("") && content.matches("")) {
+            Toast.makeText(this, "商品名と値段が入力されていません", Toast.LENGTH_SHORT);
+            return;
         }
 
-        save(title, updateDate, content,date);
+        save(title, updateDate, content, date);
 
         finish();
     }
