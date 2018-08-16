@@ -18,8 +18,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".Create" />
-        <activity android:name=".DetailActivity"></activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".DetailActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".GoodItemListActivity" />
+        <activity android:name=".BadItemListActivity" />
+        <activity
+            android:name=".BottomBarAdapterActivity"
+            android:label="@string/title_activity_bottom_bar_adapter" />
+        <activity android:name=".MainActivity2"></activity>
     </application>
 
 </manifest>

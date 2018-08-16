@@ -26,7 +26,7 @@ public class MemoAdapter extends ArrayAdapter<Memo> {
     public View getView(int position, View convertView, ViewGroup parent) {
         Memo memo = getItem(position);
         if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.layout_item_memo, null);
+            convertView = layoutInflater.inflate(R.layout.memo_item_layout, null);
         }
 
         TextView titleText = (TextView) convertView.findViewById(R.id.titleText);

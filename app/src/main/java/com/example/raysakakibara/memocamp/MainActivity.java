@@ -8,9 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.util.Log;
-
 import java.util.List;
-
 import android.app.AlertDialog.Builder;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -18,7 +16,6 @@ import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.widget.ArrayAdapter;
-
 import io.realm.Realm;
 import io.realm.RealmResults;
 
@@ -51,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         RealmResults<Memo> results = realm.where(Memo.class).findAll();
         List<Memo> items = realm.copyFromRealm(results);
 
-        MemoAdapter adapter = new MemoAdapter(this, R.layout.layout_item_memo, items);
+        MemoAdapter adapter = new MemoAdapter(this, R.layout.memo_item_layout, items);
 
         listView.setAdapter(adapter);
     }
@@ -68,12 +65,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onDestroy() {
+    public void onDestroy(){
         super.onDestroy();
         realm.close();
 
     }
 
 }
-
 
