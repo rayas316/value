@@ -50,7 +50,7 @@ public class Create extends AppCompatActivity {
         String updateDate = sdf.format(date);
         String content = contentEditText.getText().toString();
         if (title.matches("") && content.matches("")) {
-            Toast.makeText(this, "商品名と値段が入力されていません", Toast.LENGTH_SHORT);
+            Toast.makeText(this, "商品名と値段が入力されていません", Toast.LENGTH_SHORT).show();
             return;
         }
         else if (title.matches("")) {

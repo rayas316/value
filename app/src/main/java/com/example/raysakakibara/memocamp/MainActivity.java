@@ -37,19 +37,17 @@ public class MainActivity extends AppCompatActivity {
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {//int positionは何番目のデータを押したかを管理している
-                //adapter.getItem(position)で押したデータのMemoオブジェクトを取得できる
-                //Memo.titleとやれば押したやつのtitleが取得できる、この要領でtitle、updateDate、contentが押したやつと同じものをrealmの中から探してくる
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 RealmResults<Memo> results = realm.where(Memo.class)
                         .equalTo("title", adapter.getItem(position).title)
                         .equalTo("updateDate", adapter.getItem(position).updateDate)
                         .equalTo("content", adapter.getItem(position).content)
-                        .findAll();//該当するもの全てを見つける
+                        .findAll();
                 realm.beginTransaction();
-                results.deleteAllFromRealm();//全てを削除する
-                realm.commitTransaction();//変更を更新
+                results.deleteAllFromRealm();
+                realm.commitTransaction();
                 items.remove(position);
-                adapter.notifyDataSetChanged();//realmのデータが変更されたことを通知してリストに表示される内容を更新する
+                adapter.notifyDataSetChanged();
                 return false;
             }
 
