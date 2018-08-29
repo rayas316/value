@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     public ListView listView;
     public Realm realm;
     MemoAdapter adapter;
+    List<Memo> items;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 realm.beginTransaction();
                 results.deleteAllFromRealm();//全てを削除する
                 realm.commitTransaction();//変更を更新
+                items.remove(position);
                 adapter.notifyDataSetChanged();//realmのデータが変更されたことを通知してリストに表示される内容を更新する
                 return false;
             }
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void setMemoList() {
         RealmResults<Memo> results = realm.where(Memo.class).findAll();
-        List<Memo> items = realm.copyFromRealm(results);
+        items = realm.copyFromRealm(results);
 
         adapter = new MemoAdapter(this, R.layout.layout_item_memo, items);
 
