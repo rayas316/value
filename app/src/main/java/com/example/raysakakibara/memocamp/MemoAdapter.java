@@ -7,11 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class MemoAdapter extends ArrayAdapter<Memo> {
     public LayoutInflater layoutInflater;
@@ -26,7 +23,7 @@ public class MemoAdapter extends ArrayAdapter<Memo> {
     public View getView(int position, View convertView, ViewGroup parent) {
         Memo memo = getItem(position);
         if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.memo_item_layout, null);
+            convertView = layoutInflater.inflate(R.layout.layout_item_memo, null);
         }
 
         TextView titleText = (TextView) convertView.findViewById(R.id.titleText);

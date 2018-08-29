@@ -49,18 +49,19 @@ public class Create extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH時mm分", Locale.JAPANESE);
         String updateDate = sdf.format(date);
         String content = contentEditText.getText().toString();
-        if (title.matches("")) {
-            Toast.makeText(this, "商品名が入力されていません。", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (content.matches("")) {
-            Toast.makeText(this, "値段が入力されていません。", Toast.LENGTH_SHORT).show();
-            return;
-        }
         if (title.matches("") && content.matches("")) {
             Toast.makeText(this, "商品名と値段が入力されていません", Toast.LENGTH_SHORT);
             return;
         }
+        else if (title.matches("")) {
+            Toast.makeText(this, "商品名が入力されていません。", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else if (content.matches("")) {
+            Toast.makeText(this, "値段が入力されていません。", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
 
         save(title, updateDate, content, date);
 

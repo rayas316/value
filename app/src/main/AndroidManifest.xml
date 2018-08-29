@@ -7,7 +7,7 @@
         android:allowBackup="true"
         android:icon="@drawable/iconxxhdpi"
         android:label="valueapp"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/iconxxhdpi"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SprashActivity">
@@ -22,10 +22,6 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".GoodItemListActivity" />
         <activity android:name=".BadItemListActivity" />
-        <activity
-            android:name=".BottomBarAdapterActivity"
-            android:label="@string/title_activity_bottom_bar_adapter" />
-        <activity android:name=".MainActivity2"></activity>
     </application>
 
 </manifest>

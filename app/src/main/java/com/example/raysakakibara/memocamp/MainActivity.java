@@ -1,27 +1,19 @@
 package com.example.raysakakibara.memocamp;
 
-
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.util.Log;
 import java.util.List;
-import android.app.AlertDialog.Builder;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.FragmentManager;
-import android.content.DialogInterface;
-import android.widget.ArrayAdapter;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
 public class MainActivity extends AppCompatActivity {
     public ListView listView;
     public Realm realm;
+    MemoAdapter adapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,13 +34,33 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {//int positionは何番目のデータを押したかを管理している
+                //adapter.getItem(position)で押したデータのMemoオブジェクトを取得できる
+                //Memo.titleとやれば押したやつのtitleが取得できる、この要領でtitle、updateDate、contentが押したやつと同じものをrealmの中から探してくる
+                RealmResults<Memo> results = realm.where(Memo.class)
+                        .equalTo("title", adapter.getItem(position).title)
+                        .equalTo("updateDate", adapter.getItem(position).updateDate)
+                        .equalTo("content", adapter.getItem(position).content)
+                        .findAll();//該当するもの全てを見つける
+                realm.beginTransaction();
+                results.deleteAllFromRealm();//全てを削除する
+                realm.commitTransaction();//変更を更新
+                adapter.notifyDataSetChanged();//realmのデータが変更されたことを通知してリストに表示される内容を更新する
+                return false;
+            }
+
+        });
+
+
     }
 
     public void setMemoList() {
         RealmResults<Memo> results = realm.where(Memo.class).findAll();
         List<Memo> items = realm.copyFromRealm(results);
 
-        MemoAdapter adapter = new MemoAdapter(this, R.layout.memo_item_layout, items);
+        adapter = new MemoAdapter(this, R.layout.layout_item_memo, items);
 
         listView.setAdapter(adapter);
     }
@@ -65,11 +77,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onDestroy(){
+    public void onDestroy() {
         super.onDestroy();
         realm.close();
 
     }
 
 }
-
