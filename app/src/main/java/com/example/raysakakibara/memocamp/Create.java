@@ -2,6 +2,7 @@ package com.example.raysakakibara.memocamp;
 
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -18,6 +19,8 @@ public class Create extends AppCompatActivity {
     public Realm realm;
     TextInputEditText titleEditText;
     TextInputEditText contentEditText;
+    TextInputLayout titleEditTextTextInputLayout;
+    TextInputLayout contentEditTextTextInputLayout;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,22 +47,30 @@ public class Create extends AppCompatActivity {
     }
 
     public void create(View view) {
-
+        titleEditTextTextInputLayout=findViewById(R.id.titleEditTextTextInputLayout);
+        contentEditTextTextInputLayout=findViewById(R.id.contentEditTextTextInputLayout);
         String title = titleEditText.getText().toString();
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH時mm分", Locale.JAPANESE);
         String updateDate = sdf.format(date);
         String content = contentEditText.getText().toString();
         if (title.matches("") && content.matches("")) {
-            Toast.makeText(this, "商品名と値段が入力されていません", Toast.LENGTH_SHORT).show();
+
+            contentEditTextTextInputLayout.setError("商品名と値段が入力されていません");
             return;
         }
         else if (title.matches("")) {
-            Toast.makeText(this, "商品名が入力されていません。", Toast.LENGTH_SHORT).show();
+            titleEditTextTextInputLayout.setError("商品名が入力されていません");
             return;
         }
         else if (content.matches("")) {
-            Toast.makeText(this, "値段が入力されていません。", Toast.LENGTH_SHORT).show();
+            contentEditTextTextInputLayout.setError("値段が入力されていません");
+            return;
+        }else if (title.length()>10){
+            titleEditTextTextInputLayout.setError("入力できるのは10文字までです");
+            return;
+        }else if (content.length()>10){
+            contentEditTextTextInputLayout.setError("入力できるのは10桁までです");
             return;
         }
 

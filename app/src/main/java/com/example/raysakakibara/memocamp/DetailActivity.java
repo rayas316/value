@@ -41,6 +41,7 @@ public class DetailActivity extends AppCompatActivity {
     public void update(View view) {
         final Memo memo = realm.where(Memo.class).equalTo("updateDate", getIntent().getStringExtra("updateDate")).findFirst();
 
+
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
