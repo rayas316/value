@@ -6,7 +6,7 @@
         android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/iconxxhdpi"
-        android:label="valueapp"
+        android:label="Prive"
         android:roundIcon="@drawable/iconxxhdpi"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
