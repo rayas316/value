@@ -11,8 +11,8 @@ import io.realm.Realm;
 
 public class DetailActivity extends AppCompatActivity {
     Realm realm;
-    EditText titleText;
-    EditText contentText;
+    EditText titleEditText;
+    EditText contentEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,11 +20,10 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_activity);
         realm = Realm.getDefaultInstance();
 
-        titleText = (EditText) findViewById(R.id.titleEditText);
-        contentText = (EditText) findViewById(R.id.contentEditText);
+        titleEditText = (EditText) findViewById(R.id.titleEditText);
+        contentEditText = (EditText) findViewById(R.id.contentEditText);
         showData();
     }
-
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -36,8 +35,8 @@ public class DetailActivity extends AppCompatActivity {
 
     public void showData() {
         final Memo memo = realm.where(Memo.class).equalTo("updateDate", getIntent().getStringExtra("updateDate")).findFirst();
-        titleText.setText(memo.title);
-        contentText.setText(memo.content);
+        titleEditText.setText(memo.title);
+        contentEditText.setText(memo.content);
 
     }
 
@@ -46,8 +45,8 @@ public class DetailActivity extends AppCompatActivity {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                memo.title = titleText.getText().toString();
-                memo.content = contentText.getText().toString();
+                memo.title = titleEditText.getText().toString();
+                memo.content = contentEditText.getText().toString();
             }
         });
         finish();
