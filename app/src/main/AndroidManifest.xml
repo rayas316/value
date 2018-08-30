@@ -20,8 +20,6 @@
         <activity android:name="com.example.raysakakibara.prive.Create" />
         <activity android:name="com.example.raysakakibara.prive.DetailActivity" />
         <activity android:name="com.example.raysakakibara.prive.MainActivity" />
-        <activity android:name="com.example.raysakakibara.prive.GoodItemListActivity" />
-        <activity android:name="com.example.raysakakibara.prive.BadItemListActivity" />
     </application>
 
 </manifest>

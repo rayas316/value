@@ -4,7 +4,7 @@ import java.util.Date;
 
 import io.realm.RealmObject;
 
-public class Memo extends RealmObject {
+public class Card extends RealmObject {
     public String title;
 
     public String updateDate;

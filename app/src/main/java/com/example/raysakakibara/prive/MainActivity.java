@@ -13,8 +13,8 @@ import io.realm.RealmResults;
 public class MainActivity extends AppCompatActivity {
     public ListView listView;
     public Realm realm;
-    MemoAdapter adapter;
-    List<Memo> items;
+    CardAdapter adapter;
+    List<Card> items;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Memo memo = (Memo) parent.getItemAtPosition(position);
+                Card card = (Card) parent.getItemAtPosition(position);
                 Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-                intent.putExtra("updateDate", memo.updateDate);
+                intent.putExtra("updateDate", card.updateDate);
                 startActivity(intent);
             }
 
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                RealmResults<Memo> results = realm.where(Memo.class)
+                RealmResults<Card> results = realm.where(Card.class)
                         .equalTo("title", adapter.getItem(position).title)
                         .equalTo("updateDate", adapter.getItem(position).updateDate)
                         .equalTo("content", adapter.getItem(position).content)
@@ -56,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setMemoList() {
-        RealmResults<Memo> results = realm.where(Memo.class).findAll();
+        RealmResults<Card> results = realm.where(Card.class).findAll();
         items = realm.copyFromRealm(results);
 
-        adapter = new MemoAdapter(this, R.layout.layout_item_memo, items);
+        adapter = new CardAdapter(this, R.layout.layout_item_memo, items);
 
         listView.setAdapter(adapter);
     }

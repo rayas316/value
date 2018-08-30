@@ -10,18 +10,18 @@ import android.widget.TextView;
 import java.util.Date;
 import java.util.List;
 
-public class MemoAdapter extends ArrayAdapter<Memo> {
+public class CardAdapter extends ArrayAdapter<Card> {
     public LayoutInflater layoutInflater;
 
 
-    MemoAdapter(Context context, int textViewResourceId, List<Memo> objects) {
+    CardAdapter(Context context, int textViewResourceId, List<Card> objects) {
         super(context, textViewResourceId, objects);
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Memo memo = getItem(position);
+        Card card = getItem(position);
         if (convertView == null) {
             convertView = layoutInflater.inflate(R.layout.layout_item_memo, null);
         }
@@ -31,10 +31,10 @@ public class MemoAdapter extends ArrayAdapter<Memo> {
         TextView valueOfEverydayText = (TextView) convertView.findViewById(R.id.valueOfEverydayText);
         TextView dateText=(TextView)convertView.findViewById(R.id.dateView);
 
-        titleText.setText(memo.title);
-        contentsText.setText(memo.content + "¥");
+        titleText.setText(card.title);
+        contentsText.setText(card.content + "¥");
         Date date1 = new Date();
-        Date date2 = memo.date;
+        Date date2 = card.date;
         long datetime1 = date1.getTime();
         long datetime2 = date2.getTime();
         long one_date_time = 24 * 60 * 60 * 1000;
@@ -42,7 +42,7 @@ public class MemoAdapter extends ArrayAdapter<Memo> {
         if (diffDays == 0) {
             diffDays = 1;
         }
-        long value1 = Long.parseLong(memo.content);
+        long value1 = Long.parseLong(card.content);
         long value2 = (value1 / diffDays);
         valueOfEverydayText.setText(String.valueOf(value2)+"¥");
         dateText.setText(String.valueOf(diffDays)+"日前");

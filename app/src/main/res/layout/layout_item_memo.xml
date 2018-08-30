@@ -38,7 +38,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="買ったもの:"
+                android:text="商品名:"
                 android:textSize="24sp" />
 
             <TextView

@@ -33,11 +33,11 @@ public class Create extends AppCompatActivity {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm bgRealm) {
-                Memo memo = realm.createObject(Memo.class);
-                memo.title = title;
-                memo.updateDate = updateDate;
-                memo.content = content;
-                memo.date = date;
+                Card card = realm.createObject(Card.class);
+                card.title = title;
+                card.updateDate = updateDate;
+                card.content = content;
+                card.date = date;
             }
         });
 

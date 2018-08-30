@@ -5,7 +5,6 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-
 import io.realm.Realm;
 
 public class DetailActivity extends AppCompatActivity {
@@ -35,14 +34,14 @@ public class DetailActivity extends AppCompatActivity {
 
 
     public void showData() {
-        final Memo memo = realm.where(Memo.class).equalTo("updateDate", getIntent().getStringExtra("updateDate")).findFirst();
-        titleText.setText(memo.title);
-        contentText.setText(memo.content);
+        final Card card = realm.where(Card.class).equalTo("updateDate", getIntent().getStringExtra("updateDate")).findFirst();
+        titleText.setText(card.title);
+        contentText.setText(card.content);
 
     }
 
     public void update(View view) {
-        final Memo memo = realm.where(Memo.class).equalTo("updateDate", getIntent().getStringExtra("updateDate")).findFirst();
+        final Card card = realm.where(Card.class).equalTo("updateDate", getIntent().getStringExtra("updateDate")).findFirst();
         String title=titleText.getText().toString();
         String content=contentText.getText().toString();
         titleEditTextTextInputLayout2=findViewById(R.id.titleEditTextTextInputLayout2);
@@ -69,8 +68,8 @@ public class DetailActivity extends AppCompatActivity {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                memo.title = titleText.getText().toString();
-                memo.content = contentText.getText().toString();
+                card.title = titleText.getText().toString();
+                card.content = contentText.getText().toString();
             }
         });
         finish();
