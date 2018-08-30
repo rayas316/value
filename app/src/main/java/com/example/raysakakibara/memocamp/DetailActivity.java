@@ -18,8 +18,8 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_activity);
         realm = Realm.getDefaultInstance();
 
-        titleText = (TextInputEditText) findViewById(R.id.titleEditText);
-        contentText = (TextInputEditText) findViewById(R.id.contentEditText);
+        titleText = (TextInputEditText) findViewById(R.id.titleEditText2);
+        contentText = (TextInputEditText) findViewById(R.id.contentEditText2);
         showData();
     }
     @Override

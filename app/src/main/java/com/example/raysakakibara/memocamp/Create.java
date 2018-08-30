@@ -1,6 +1,7 @@
 package com.example.raysakakibara.memocamp;
 
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -15,16 +16,16 @@ import io.realm.Realm;
 
 public class Create extends AppCompatActivity {
     public Realm realm;
-    EditText titleEditText;
-    EditText contentEditText;
+    TextInputEditText titleEditText;
+    TextInputEditText contentEditText;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
         realm = Realm.getDefaultInstance();
-        titleEditText = findViewById(R.id.titleText);
-        contentEditText = findViewById(R.id.contentText);
+        titleEditText = findViewById(R.id.titleEditText);
+        contentEditText = findViewById(R.id.contentEditText);
     }
 
 

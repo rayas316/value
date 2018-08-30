@@ -15,7 +15,7 @@
         android:orientation="vertical">
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/contentEditTextTextInputLayout"
+            android:id="@+id/titleEditTextTextInputLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:counterEnabled="true"
@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/titleEditText"
+                android:id="@+id/titleEditText2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="13dp"
@@ -42,7 +42,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/titleEditTextTextInputLayout"
+            android:id="@+id/contentEditTextTextInputLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:counterEnabled="true"
@@ -55,7 +55,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/contentEditText"
+                android:id="@+id/contentEditText2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
