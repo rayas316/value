@@ -1,4 +1,4 @@
-package com.example.raysakakibara.memocamp;
+package com.example.raysakakibara.prive;
 
 import org.junit.Test;
 
