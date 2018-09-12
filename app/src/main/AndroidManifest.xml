@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.raysakakibara.prive">
+    package="com.io.raysakakibara.prive">
 
     <application
-        android:name="com.example.raysakakibara.prive.MyApplication"
+        android:name="com.io.raysakakibara.prive.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/iconxxhdpi"
         android:label="Prive"
         android:roundIcon="@drawable/iconxxhdpi"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.raysakakibara.prive.SprashActivity">
+        <activity android:name="com.io.raysakakibara.prive.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.raysakakibara.prive.Create" />
-        <activity android:name="com.example.raysakakibara.prive.DetailActivity" />
-        <activity android:name="com.example.raysakakibara.prive.MainActivity" />
+        <activity android:name="com.io.raysakakibara.prive.Create" />
+        <activity android:name="com.io.raysakakibara.prive.DetailActivity" />
+        <activity android:name="com.io.raysakakibara.prive.MainActivity" />
     </application>
 
 </manifest>
