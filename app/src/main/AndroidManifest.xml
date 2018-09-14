@@ -1,25 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     package="ray.io.raysakakibara.prive">
 
     <application
         android:name="ray.io.raysakakibara.prive.MyApplication"
+=======
+    package="com.io.raysakakibara.prive">
+
+    <application
+        android:name="com.io.raysakakibara.prive.MyApplication"
+>>>>>>> f95927bd988466412e6dd5e384623aacf5d76347
         android:allowBackup="true"
         android:icon="@drawable/iconxxhdpi"
         android:label="Prive"
         android:roundIcon="@drawable/iconxxhdpi"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name="ray.io.raysakakibara.prive.SplashActivity">
+=======
+        <activity android:name="com.io.raysakakibara.prive.SplashActivity">
+>>>>>>> f95927bd988466412e6dd5e384623aacf5d76347
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name="ray.io.raysakakibara.prive.Create" />
         <activity android:name="ray.io.raysakakibara.prive.DetailActivity" />
         <activity android:name="ray.io.raysakakibara.prive.MainActivity" />
+=======
+        <activity android:name="com.io.raysakakibara.prive.Create" />
+        <activity android:name="com.io.raysakakibara.prive.DetailActivity" />
+        <activity android:name="com.io.raysakakibara.prive.MainActivity" />
+>>>>>>> f95927bd988466412e6dd5e384623aacf5d76347
     </application>
 
 </manifest>

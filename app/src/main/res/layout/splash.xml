@@ -6,5 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/splash"
+<<<<<<< HEAD:app/src/main/res/layout/splash.xml
     tools:context="ray.io.raysakakibara.prive.SplashActivity">
+=======
+    tools:context=".SplashActivity">
+>>>>>>> f95927bd988466412e6dd5e384623aacf5d76347:app/src/main/res/layout/splash.xml
 </android.support.constraint.ConstraintLayout>
