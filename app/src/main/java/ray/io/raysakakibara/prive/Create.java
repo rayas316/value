@@ -1,4 +1,4 @@
-package com.example.raysakakibara.prive;
+package ray.io.raysakakibara.prive;
 
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
@@ -22,10 +22,10 @@ public class Create extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create);
+        setContentView(ray.io.raysakakibara.prive.R.layout.activity_create);
         realm = Realm.getDefaultInstance();
-        titleEditText = findViewById(R.id.titleEditText);
-        contentEditText = findViewById(R.id.contentEditText);
+        titleEditText = findViewById(ray.io.raysakakibara.prive.R.id.titleEditText);
+        contentEditText = findViewById(ray.io.raysakakibara.prive.R.id.contentEditText);
     }
 
 
@@ -44,8 +44,8 @@ public class Create extends AppCompatActivity {
     }
 
     public void create(View view) {
-        titleEditTextTextInputLayout=findViewById(R.id.titleEditTextTextInputLayout);
-        contentEditTextTextInputLayout=findViewById(R.id.contentEditTextTextInputLayout);
+        titleEditTextTextInputLayout = findViewById(ray.io.raysakakibara.prive.R.id.titleEditTextTextInputLayout);
+        contentEditTextTextInputLayout = findViewById(ray.io.raysakakibara.prive.R.id.contentEditTextTextInputLayout);
         String title = titleEditText.getText().toString();
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH時mm分", Locale.JAPANESE);
@@ -55,18 +55,16 @@ public class Create extends AppCompatActivity {
 
             contentEditTextTextInputLayout.setError("商品名と値段が入力されていません");
             return;
-        }
-        else if (title.matches("")) {
+        } else if (title.matches("")) {
             titleEditTextTextInputLayout.setError("商品名が入力されていません");
             return;
-        }
-        else if (content.matches("")) {
+        } else if (content.matches("")) {
             contentEditTextTextInputLayout.setError("値段が入力されていません");
             return;
-        }else if (title.length()>10){
+        } else if (title.length() > 10) {
             titleEditTextTextInputLayout.setError("入力できるのは10文字までです");
             return;
-        }else if (content.length()>10){
+        } else if (content.length() > 10) {
             contentEditTextTextInputLayout.setError("入力できるのは10桁までです");
             return;
         }

@@ -1,4 +1,4 @@
-package com.example.raysakakibara.prive;
+package ray.io.raysakakibara.prive;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -23,13 +23,13 @@ public class CardAdapter extends ArrayAdapter<Card> {
     public View getView(int position, View convertView, ViewGroup parent) {
         Card card = getItem(position);
         if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.layout_item_memo, null);
+            convertView = layoutInflater.inflate(ray.io.raysakakibara.prive.R.layout.layout_item_memo, null);
         }
 
-        TextView titleText = (TextView) convertView.findViewById(R.id.titleText);
-        TextView contentsText = (TextView) convertView.findViewById(R.id.contentText);
-        TextView valueOfEverydayText = (TextView) convertView.findViewById(R.id.valueOfEverydayText);
-        TextView dateText=(TextView)convertView.findViewById(R.id.dateView);
+        TextView titleText = (TextView) convertView.findViewById(ray.io.raysakakibara.prive.R.id.titleText);
+        TextView contentsText = (TextView) convertView.findViewById(ray.io.raysakakibara.prive.R.id.contentText);
+        TextView valueOfEverydayText = (TextView) convertView.findViewById(ray.io.raysakakibara.prive.R.id.valueOfEverydayText);
+        TextView dateText = (TextView) convertView.findViewById(ray.io.raysakakibara.prive.R.id.dateView);
 
         titleText.setText(card.title);
         contentsText.setText(card.content + "¥");
@@ -44,8 +44,8 @@ public class CardAdapter extends ArrayAdapter<Card> {
         }
         long value1 = Long.parseLong(card.content);
         long value2 = (value1 / diffDays);
-        valueOfEverydayText.setText(String.valueOf(value2)+"¥");
-        dateText.setText(String.valueOf(diffDays)+"日前");
+        valueOfEverydayText.setText(String.valueOf(value2) + "¥");
+        dateText.setText(String.valueOf(diffDays) + "日前");
 
         return convertView;
 

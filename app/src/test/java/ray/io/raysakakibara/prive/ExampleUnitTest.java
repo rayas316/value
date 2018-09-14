@@ -1,4 +1,4 @@
-package com.example.raysakakibara.prive;
+package ray.io.raysakakibara.prive;
 
 import org.junit.Test;
 

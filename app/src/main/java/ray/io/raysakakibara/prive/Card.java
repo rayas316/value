@@ -1,4 +1,4 @@
-package com.example.raysakakibara.prive;
+package ray.io.raysakakibara.prive;
 
 import java.util.Date;
 
@@ -12,4 +12,6 @@ public class Card extends RealmObject {
     public String content;
 
     public Date date;
+
+    public String count;
 }

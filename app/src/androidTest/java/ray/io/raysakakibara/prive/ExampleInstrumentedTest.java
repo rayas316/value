@@ -1,4 +1,4 @@
-package com.example.raysakakibara.prive;
+package ray.io.raysakakibara.prive;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

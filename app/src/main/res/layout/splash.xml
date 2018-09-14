@@ -5,6 +5,6 @@
     android:theme="@style/Theme.Design.NoActionBar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sprash"
-    tools:context=".SprashActivity">
+    android:background="@drawable/splash"
+    tools:context="ray.io.raysakakibara.prive.SplashActivity">
 </android.support.constraint.ConstraintLayout>
